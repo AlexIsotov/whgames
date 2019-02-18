@@ -45,12 +45,20 @@ const styles = theme => ({
 
 class CardM extends Component {
 
-state = { expanded: false };
+constructor(props){
+	super(props);
+	this.state = { expanded: false,
+					like: false
+					}
+}
+
 
 handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   };
-  
+like=()=>{
+	this.setState({like: !this.state.like})
+}  
   render() {
 	  const { classes } = this.props;
 	 return (
@@ -72,7 +80,7 @@ handleExpandClick = () => {
         <CardMedia
           className={classes.media}
           image={this.props.img}
-          title="Paella dish"
+          title="img"
         />
         <CardContent>
           <Typography component="p">
@@ -80,8 +88,8 @@ handleExpandClick = () => {
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
+          <IconButton onClick={this.like} aria-label="Add to favorites">
+            <FavoriteIcon color={this.state.like===true? 'primary': 'default'} />
           </IconButton>
           <IconButton aria-label="Open">
             <OpenInNewIcon />
