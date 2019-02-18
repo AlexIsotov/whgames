@@ -13,6 +13,7 @@ import Tab from '@material-ui/core/Tab';
 import GridNews from './GridNews';
 import GridStreams from './GridStreams';
 import GridLinks from './GridLinks';
+import TabBar from './TabBar';
 
 const styles = {
   root: {
@@ -49,6 +50,9 @@ handleChange = (event, value) => {
     this.setState({ value });
   };
   
+getScreen=(val)=>{
+	this.setState({value:val})
+}; 
   render() {
 	  const { classes } = this.props;
 	  const { anchorEl, value  } = this.state;
@@ -79,13 +83,9 @@ handleChange = (event, value) => {
           </Typography>
           <Button color="default">Login</Button>
         </Toolbar>
-		<Tabs textColor="default" value={value} onChange={this.handleChange}>
-            <Tab label="News"  />
-            <Tab label="Streams" />
-            <Tab label="Links" />
-        </Tabs>
-      </AppBar>
-	  <br/>
+		<TabBar val={this.getScreen} />
+	 </AppBar>
+	    <br/>
 	    {value === 0 && <GridNews/>}
         {value === 1 && <GridStreams/>}
         {value === 2 && <GridLinks/>}

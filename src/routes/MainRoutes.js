@@ -10,7 +10,7 @@ export class MainRoutes extends Component {
   return (
     <Router history={history}>
       <Switch>
-	  {/* <Route path="/read/:post" component=null />*/}
+	  {/* <Route path="/read/:post" component=null /> make sure about new tab in each post!!!!!!!!!!*/}
         <Route exact path="/" component={MainPage} />
        
         		
