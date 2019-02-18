@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import AppBarM from './components/AppBarM';
-import Footer from './components/Footer';
-import MainRoutes from './routes/MainRoutes';
+import AppBarM from './AppBarM';
+import Footer from './Footer';
+
 
 class App extends Component {
 
@@ -10,7 +10,8 @@ class App extends Component {
 	  
    return (
    	<div>
-	  <MainRoutes />
+      <AppBarM />
+	  <Footer />
 	</div>
 
     );

@@ -11,6 +11,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import GridNews from './GridNews';
+import GridStreams from './GridStreams';
+import GridLinks from './GridLinks';
 
 const styles = {
   root: {
@@ -78,15 +80,15 @@ handleChange = (event, value) => {
           <Button color="default">Login</Button>
         </Toolbar>
 		<Tabs textColor="default" value={value} onChange={this.handleChange}>
-            <Tab label="News" />
+            <Tab label="News"  />
             <Tab label="Streams" />
             <Tab label="Links" />
         </Tabs>
       </AppBar>
 	  <br/>
-	   {value === 0 && <GridNews/>}
-        {value === 1 && <div>2</div>}
-        {value === 2 && <div>3</div>}
+	    {value === 0 && <GridNews/>}
+        {value === 1 && <GridStreams/>}
+        {value === 2 && <GridLinks/>}
     </div>
 
     );
