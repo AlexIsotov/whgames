@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import GridNews from './GridNews';
-import GridStreams from './GridStreams';
-import GridLinks from './GridLinks';
-
-
 
 class TabBar extends Component {
 
@@ -21,8 +15,7 @@ handleChange = (event, value) => {
   };
   
   render() {
-	  const { classes } = this.props;
-	  const { anchorEl, value  } = this.state;
+	  const { value  } = this.state;
 
    return (
    	<div>
