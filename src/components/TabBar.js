@@ -19,7 +19,7 @@ handleChange = (event, value) => {
 
    return (
    	<div>
-      	<Tabs textColor="inherit" value={value} onChange={this.handleChange}>
+      	<Tabs textColor="secondary" value={value} onChange={this.handleChange}>
             <Tab label="News"  />
             <Tab label="Streams" />
             <Tab label="Links" />
