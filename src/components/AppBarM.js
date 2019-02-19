@@ -6,12 +6,14 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import GridNews from './GridNews';
 import GridStreams from './GridStreams';
 import GridLinks from './GridLinks';
 import TabBar from './TabBar';
+import Tooltip from '@material-ui/core/Tooltip'
 
 const styles = {
   root: {
@@ -79,7 +81,12 @@ getScreen=(val)=>{
           <Typography variant="h6" color="default" className={classes.grow}>
             WH-GAMES !
           </Typography>
-          <Button color="default">Login</Button>
+		  <Button color="default">Login</Button>
+		  <Tooltip title="Add new post">
+		  <IconButton color='primary'>
+			<AddCircleIcon />
+		  </IconButton>
+		  </Tooltip>
         </Toolbar>
 		<TabBar val={this.getScreen} />
 	 </AppBar>
