@@ -14,6 +14,10 @@ import GridStreams from './GridStreams';
 import GridLinks from './GridLinks';
 import TabBar from './TabBar';
 import Tooltip from '@material-ui/core/Tooltip'
+import Drawer from '@material-ui/core/Drawer';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+
+const drawerWidth = 340;
 
 const styles = {
   root: {
@@ -29,22 +33,34 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+	backgroundColor: '#eeeeee'
+  },
+   drawerHeader: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
 };
 
 class AppBarM extends Component {
 
 state = {
-    anchorEl: null,
-	value: 0,
+    value: 0,
+	openDrawer: false,
   };
   
-handleClick = event => {
-   this.setState({ anchorEl: event.currentTarget });
+handleClick = () => {
+   this.setState({ openDrawer: !this.state.openDrawer });
   };
-  
-handleClose = () => {
-    this.setState({ anchorEl: null });
-  }; 
+
+handleDrawerClose = () => {
+    this.setState({ openDrawer: false });
+  };
   
 handleChange = (event, value) => {
     this.setState({ value });
@@ -68,16 +84,26 @@ getScreen=(val)=>{
 				aria-label="Menu">
             <MenuIcon/>
           </IconButton>
-		  <Menu
-				  id="simple-menu"
-				  anchorEl={anchorEl}
-				  open={Boolean(anchorEl)}
-				  onClose={this.handleClose}
-				>
-				  <MenuItem >Profile</MenuItem>
-				  <MenuItem >My account</MenuItem>
-				  <MenuItem >Logout</MenuItem>
-				</Menu>
+		  
+		 <Drawer
+          className={classes.drawer}
+          variant="persistent"
+          anchor="left"
+          open={this.state.openDrawer}
+		  classes={{
+            paper: classes.drawerPaper,
+          }}
+			>
+			<div className={classes.drawerHeader}>
+				<IconButton onClick={this.handleDrawerClose}>
+					<ChevronLeftIcon />
+				</IconButton>
+			</div>
+			<MenuItem >Profile</MenuItem>
+			<MenuItem >My account</MenuItem>
+			<MenuItem >Logout</MenuItem>
+		</Drawer>
+		 
           <Typography variant="h6" color="default" className={classes.grow}>
             WH-GAMES !
           </Typography>
