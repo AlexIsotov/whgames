@@ -17,6 +17,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Dialog from '@material-ui/core/Dialog';
 import ModalPost from './ModalPost';
+import Tooltip from '@material-ui/core/Tooltip'
 
 const styles = theme => ({
   card: {
@@ -79,7 +80,7 @@ handleClose = () => {
           avatar={
             <Avatar aria-label="Recipe" className={classes.avatar}>
               A
-            </Avatar>
+            </Avatar> /*do u really need avatar of admin post?*/
           }
           action={
             <IconButton>
@@ -100,12 +101,17 @@ handleClose = () => {
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton onClick={this.like} aria-label="Add to favorites">
+         <Tooltip title="Like it!">
+		 <IconButton onClick={this.like} aria-label="Add to favorites">
             <FavoriteIcon color={this.state.like===true? 'primary': 'inherit'} />
           </IconButton>
+		 </Tooltip>
+		 <Tooltip title="Read more!">
           <IconButton onClick={this.handleOpen} aria-label="Open">
             <OpenInNewIcon />
           </IconButton>
+		 </Tooltip>
+		 <Tooltip title="Show comments">
           <IconButton
             className={classnames(classes.expand, {
               [classes.expandOpen]: this.state.expanded,
@@ -116,24 +122,27 @@ handleClose = () => {
           >
             <ExpandMoreIcon />
           </IconButton>
+		 </Tooltip>
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Info:</Typography>
+            <Typography paragraph>Info+Comments:</Typography>
             <Typography paragraph>
 			Очень полезное описание с остроумными комментариями!!!
             </Typography>
           </CardContent>
         </Collapse>
-		
-		 <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <ModalPost title={this.props.title} text={this.props.readMore}/>
-         </Dialog>
+			{this.state.open!==false && 
+			<Dialog
+			  open={this.state.open}
+			  onClose={this.handleClose}
+			  aria-labelledby="alert-dialog-title"
+			  aria-describedby="alert-dialog-description"
+			>
+			  <ModalPost title={this.props.title} text={this.props.readMore}/>
+			 </Dialog>
+			}
+		 
 		
       </Card>
 
