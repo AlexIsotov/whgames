@@ -15,6 +15,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Dialog from '@material-ui/core/Dialog';
+import ModalPost from './ModalPost';
 
 const styles = theme => ({
   card: {
@@ -47,7 +49,8 @@ class CardM extends Component {
 constructor(props){
 	super(props);
 	this.state = { expanded: false,
-					like: false
+					like: false,
+					open: false,
 					}
 }
 
@@ -55,9 +58,19 @@ constructor(props){
 handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   };
+  
 like=()=>{
 	this.setState({like: !this.state.like})
-}  
+}; 
+
+handleOpen = () => {
+     this.setState({ open: true });
+  };
+
+handleClose = () => {
+    this.setState({ open: false });
+  };
+  
   render() {
 	  const { classes } = this.props;
 	 return (
@@ -83,14 +96,14 @@ like=()=>{
         />
         <CardContent>
           <Typography component="p">
-            Очень полезное описание с остроумными комментариями!!!
+           {this.props.readMore? this.props.readMore.slice(0,50)+'...' : 'Здесь пока нет описания, но оно будет! Обязательно!'} 
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton onClick={this.like} aria-label="Add to favorites">
-            <FavoriteIcon color={this.state.like===true? 'primary': 'default'} />
+            <FavoriteIcon color={this.state.like===true? 'primary': 'inherit'} />
           </IconButton>
-          <IconButton aria-label="Open">
+          <IconButton onClick={this.handleOpen} aria-label="Open">
             <OpenInNewIcon />
           </IconButton>
           <IconButton
@@ -108,10 +121,20 @@ like=()=>{
           <CardContent>
             <Typography paragraph>Info:</Typography>
             <Typography paragraph>
-			{this.props.readMore? this.props.readMore : 'No ifo'}
+			Очень полезное описание с остроумными комментариями!!!
             </Typography>
           </CardContent>
         </Collapse>
+		
+		 <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <ModalPost title={this.props.title} text={this.props.readMore}/>
+         </Dialog>
+		
       </Card>
 
     );

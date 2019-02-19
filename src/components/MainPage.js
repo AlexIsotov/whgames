@@ -3,7 +3,7 @@ import AppBarM from './AppBarM';
 import Footer from './Footer';
 
 
-class App extends Component {
+class MainPage extends Component {
 
 
   render() {
@@ -18,4 +18,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default MainPage;

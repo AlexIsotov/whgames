@@ -27,13 +27,13 @@ class Footer extends Component {
 		 <Link color='error' href={"https://wh-games.space"} >
 			WH-GAMES
 		  </Link>
-		  <Link  color='error' button href={'https://www.twitch.tv/'} >
+		  <Link  color='error'  href={'https://www.twitch.tv/'} >
 			Twitch
 		  </Link>
-		  <Link  color='error' button href={'https://www.origin.com/'} >
+		  <Link  color='error'  href={'https://www.origin.com/'} >
 			Origin
 		  </Link>
-		  <Link  color='error' button href={'https://www.google.com'} >
+		  <Link  color='error'  href={'https://www.google.com'} >
 			Google
 		  </Link>
 		 </Grid> 
