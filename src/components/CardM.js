@@ -7,7 +7,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
@@ -15,9 +14,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CreateIcon from '@material-ui/icons/Create';
+import ClearIcon from '@material-ui/icons/Clear';
 import Dialog from '@material-ui/core/Dialog';
 import ModalPost from './ModalPost';
 import Tooltip from '@material-ui/core/Tooltip'
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const styles = theme => ({
   card: {
@@ -52,6 +55,7 @@ constructor(props){
 	this.state = { expanded: false,
 					like: false,
 					open: false,
+					anchorEl: null
 					}
 }
 
@@ -71,25 +75,42 @@ handleOpen = () => {
 handleClose = () => {
     this.setState({ open: false });
   };
-  
+ openCardMenu = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  closeCardMenu = () => {
+    this.setState({ anchorEl: null });
+  };  
   render() {
 	  const { classes } = this.props;
 	 return (
    	<Card className={classes.card}>
         <CardHeader
-          avatar={
-            <Avatar aria-label="Recipe" className={classes.avatar}>
-              A
-            </Avatar> /*do u really need avatar of admin post?*/
-          }
           action={
-            <IconButton>
+			<Tooltip title="Actions">
+            <IconButton onClick={this.openCardMenu}>
               <MoreVertIcon />
             </IconButton>
+			</Tooltip>
           }
           title={this.props.title}
           subheader={this.props.date}
         />
+		 <Menu
+          id="menu"
+          anchorEl={this.state.anchorEl}
+          open={Boolean(this.state.anchorEl)}
+          onClose={this.closeCardMenu}
+          >
+            <MenuItem >
+             <MoreVertIcon /> Hide 
+            </MenuItem>
+			<MenuItem >
+              <ClearIcon />Edit
+            </MenuItem>
+          
+        </Menu>
         <CardMedia
           className={classes.media}
           image={this.props.img}
