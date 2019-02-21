@@ -104,10 +104,10 @@ handleClose = () => {
           onClose={this.closeCardMenu}
           >
             <MenuItem >
-             <MoreVertIcon /> Hide 
+             <ClearIcon /> Hide 
             </MenuItem>
 			<MenuItem >
-              <ClearIcon />Edit
+              <CreateIcon />Edit
             </MenuItem>
           
         </Menu>
