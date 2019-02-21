@@ -133,7 +133,7 @@ closeCardMenu = () => {
             <OpenInNewIcon />
           </IconButton>
 		 </Tooltip>
-		 <Tooltip title="Show comments">
+		 <Tooltip title="Show admin comments">
           <IconButton
             className={classnames(classes.expand, {
               [classes.expandOpen]: this.state.expanded,
@@ -160,6 +160,7 @@ closeCardMenu = () => {
 			  onClose={this.handleClose}
 			  aria-labelledby="alert-dialog-title"
 			  aria-describedby="alert-dialog-description"
+			  scroll='body'
 			>
 			  <ModalPost title={this.props.title} text={this.props.readMore} close={this.handleClose}/>
 			 </Dialog>
