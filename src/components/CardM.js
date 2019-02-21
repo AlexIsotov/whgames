@@ -75,11 +75,12 @@ handleOpen = () => {
 handleClose = () => {
     this.setState({ open: false });
   };
- openCardMenu = event => {
+
+openCardMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  closeCardMenu = () => {
+closeCardMenu = () => {
     this.setState({ anchorEl: null });
   };  
   render() {
@@ -147,7 +148,7 @@ handleClose = () => {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Info+Comments:</Typography>
+            <Typography paragraph>InfoComment:</Typography>
             <Typography paragraph>
 			Очень полезное описание с остроумными комментариями!!!
             </Typography>
@@ -160,7 +161,7 @@ handleClose = () => {
 			  aria-labelledby="alert-dialog-title"
 			  aria-describedby="alert-dialog-description"
 			>
-			  <ModalPost title={this.props.title} text={this.props.readMore}/>
+			  <ModalPost title={this.props.title} text={this.props.readMore} close={this.handleClose}/>
 			 </Dialog>
 			}
 		 
