@@ -5,7 +5,6 @@ import testReadMore from './testReadMore';
 
 class GridNews extends Component {
 
-
   render() {
 	  
    return (

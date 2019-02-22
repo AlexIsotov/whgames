@@ -55,7 +55,8 @@ constructor(props){
 	this.state = { expanded: false,
 					like: false,
 					open: false,
-					anchorEl: null
+					anchorEl: null,
+					hidden:false,
 					}
 }
 
@@ -82,11 +83,14 @@ openCardMenu = event => {
 
 closeCardMenu = () => {
     this.setState({ anchorEl: null });
-  };  
+  }; 
+hide=()=>{
+	this.setState({hidden: true,  anchorEl: null });
+}  
   render() {
 	  const { classes } = this.props;
 	 return (
-   	<Card className={classes.card}>
+   	<Card className={classes.card} hidden={this.state.hidden}>
         <CardHeader
           action={
 			<Tooltip title="Actions">
@@ -104,7 +108,7 @@ closeCardMenu = () => {
           open={Boolean(this.state.anchorEl)}
           onClose={this.closeCardMenu}
           >
-            <MenuItem >
+            <MenuItem onClick={this.hide}>
              <ClearIcon /> Hide 
             </MenuItem>
 			<MenuItem >

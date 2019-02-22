@@ -65,7 +65,7 @@ closeModal=()=>{
             </DialogContentText>
 			<div className={this.props.classes.commentsSection}>
 				<div className={this.props.classes.commentsHeader}>
-					<Typography align='center' variant='h5' color='default'> Comments </Typography>
+					<Typography variant='h5' color='default'> Comments </Typography>
 					<Tooltip title="Show admin comments">
 					  <IconButton
 						className={classnames(this.props.classes.expand, {
