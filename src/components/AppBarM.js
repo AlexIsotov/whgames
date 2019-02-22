@@ -15,6 +15,8 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Drawer from '@material-ui/core/Drawer';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Menu from './Menu';
+import Dialog from '@material-ui/core/Dialog';
+import AddNewPost from './AddNewPost';
 
 const drawerWidth = 340;
 
@@ -52,6 +54,7 @@ class AppBarM extends Component {
 state = {
     value: 0,
 	openDrawer: false,
+	addNewPost: false,
   };
   
 handleClick = () => {
@@ -62,13 +65,16 @@ handleDrawerClose = () => {
     this.setState({ openDrawer: false });
   };
   
-handleChange = (event, value) => {
-    this.setState({ value });
-  };
-  
 getScreen=(val)=>{
 	this.setState({value:val})
 }; 
+
+addNewPost=()=>{
+	this.setState({addNewPost:true})
+}
+handleClose = () => {
+    this.setState({ addNewPost: false });
+  };
   render() {
 	  const { classes } = this.props;
 	  const { value  } = this.state;
@@ -108,7 +114,7 @@ getScreen=(val)=>{
           </Typography>
 		  <Button color="default">Login</Button>
 		  <Tooltip title="Add new post">
-		  <IconButton color='primary'>
+		  <IconButton color='primary' onClick={this.addNewPost}>
 			<AddCircleIcon />
 		  </IconButton>
 		  </Tooltip>
@@ -119,6 +125,19 @@ getScreen=(val)=>{
 	    {value === 0 && <GridNews/>}
         {value === 1 && <GridStreams/>}
         {value === 2 && <GridLinks/>}
+		
+		{this.state.open!==false && 
+			<Dialog
+			  open={this.state.addNewPost}
+			  onClose={this.handleClose}
+			  aria-labelledby="alert-dialog-title"
+			  aria-describedby="alert-dialog-description"
+			  scroll='body'
+			>
+			  <AddNewPost close={this.handleClose}/>
+			</Dialog>
+			}
+		
     </div>
 
     );
