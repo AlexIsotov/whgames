@@ -23,6 +23,7 @@ const drawerWidth = 340;
 const styles = {
   root: {
     flexGrow: 1,
+	flex: '1 0 auto',
   },
   grow: {
     flexGrow: 1,

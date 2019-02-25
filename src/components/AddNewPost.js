@@ -75,6 +75,8 @@ cancelClose= (e)=>{
 				  variant="outlined"
 				  fullWidth='true'
 				  required
+				  autoFocus
+				  autoComplete='off'
 				/>
 				
 				<TextField

@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 const styles = theme => ({
 
   footer: {
+	flex:'0 0 auto',
     backgroundColor: '#fff176',
     marginTop: theme.spacing.unit * 8,
     padding: `${theme.spacing.unit * 6}px 0`,

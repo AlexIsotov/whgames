@@ -18,20 +18,29 @@ class Menu extends Component {
    	<div>
  		<List>
 			  <Divider />
-              <ListItem button>
-                <ListItemIcon><CardTravelIcon /></ListItemIcon>
-                <ListItemText primary='Profile'/>
-              </ListItem>
-			  <Divider />
-			  <ListItem button>
-                <ListItemIcon><AccountCircleIcon /></ListItemIcon>
-                <ListItemText primary='My account'/>
-              </ListItem>
-			  <Divider />
-			  <ListItem button>
-                <ListItemIcon><PowerSettingsNewIcon /></ListItemIcon>
-                <ListItemText primary='Logout'/>
-              </ListItem>
+			  {this.props.login!==true? 
+				<ListItem button>
+					<ListItemIcon><PowerSettingsNewIcon /></ListItemIcon>
+					<ListItemText primary='Sign in'/>
+				</ListItem>:
+				<div>
+					  <ListItem button>
+						<ListItemIcon><CardTravelIcon /></ListItemIcon>
+						<ListItemText primary='Profile'/>
+					  </ListItem>
+					  <Divider />
+					  <ListItem button>
+						<ListItemIcon><AccountCircleIcon /></ListItemIcon>
+						<ListItemText primary='My account'/>
+					  </ListItem>
+					  <Divider />
+					  <ListItem button>
+						<ListItemIcon><PowerSettingsNewIcon /></ListItemIcon>
+						<ListItemText primary='Logout'/>
+					  </ListItem>
+				</div>
+				}
+              
 			  <Divider />
           </List>
 	</div>
