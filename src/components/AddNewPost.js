@@ -5,13 +5,13 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import classnames from 'classnames';
 import Tooltip from '@material-ui/core/Tooltip'
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
 
 const styles = {
 closeButton: {
@@ -91,7 +91,11 @@ cancelClose= (e)=>{
 				  multiline
 				  rows='6'
 				/>
-				<Button fullWidth variant='outlined' color='secondary'> Add image </Button>
+				<div style={{display:'flex', justifyContent: 'center'}}>
+				<Tooltip title='Add image'>
+					<Fab color='primary' size='large'> <AddIcon /> </Fab>
+				</Tooltip>
+				</div>
 				</form>
             </DialogContentText>
 			
@@ -118,7 +122,7 @@ cancelClose= (e)=>{
 			</Dialog>
 		 <DialogActions>
 			<Button variant='contained' color='primary'> Add post </Button>
-			<Button variant='contained' color='default' onClick={this.closeModal}> Cancel </Button>
+			<Button variant='contained' color='secondary' onClick={this.closeModal}> Cancel </Button>
 		 </DialogActions>
 	</div>
 
