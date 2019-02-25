@@ -86,8 +86,11 @@ cancelClose= (e)=>{
 				  variant="outlined"
 				  fullWidth='true'
 				  required
+				  multiline
+				  rows='6'
 				/>
-			</form>
+				<Button fullWidth variant='outlined' color='secondary'> Add image </Button>
+				</form>
             </DialogContentText>
 			
 		</DialogContent>
@@ -100,13 +103,21 @@ cancelClose= (e)=>{
 			Are u sure
 			</DialogTitle>
 			<DialogContent>
-				Yes - discard all changes! Nope - Cancel
+				Do you want to exit post constructor?
 			</DialogContent>
 			<DialogActions>
-			 <Button onClick={this.confirmClose}>Yes</Button>
-			 <Button onClick={this.cancelClose}>Nope</Button>
+			<Tooltip title='Discard changes and exit'>
+			 <Button color='primary' onClick={this.confirmClose}>Yes</Button>
+			</Tooltip>
+			<Tooltip title='Cancel'>
+			 <Button color='secondary' onClick={this.cancelClose}>Nope</Button>
+			</Tooltip>
 			</DialogActions>
 			</Dialog>
+		 <DialogActions>
+			<Button variant='contained' color='primary'> Add post </Button>
+			<Button variant='contained' color='default' onClick={this.closeModal}> Cancel </Button>
+		 </DialogActions>
 	</div>
 
     );
