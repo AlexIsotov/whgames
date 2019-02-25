@@ -19,7 +19,7 @@ class Menu extends Component {
  		<List>
 			  <Divider />
 			  {this.props.login!==true? 
-				<ListItem button>
+				<ListItem button onClick={this.props.signIn}>
 					<ListItemIcon><PowerSettingsNewIcon /></ListItemIcon>
 					<ListItemText primary='Sign in'/>
 				</ListItem>:
