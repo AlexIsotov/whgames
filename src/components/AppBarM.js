@@ -133,6 +133,7 @@ handleClose = () => {
 			  aria-labelledby="alert-dialog-title"
 			  aria-describedby="alert-dialog-description"
 			  scroll='body'
+			   disableBackdropClick='true'
 			>
 			  <AddNewPost close={this.handleClose}/>
 			</Dialog>

@@ -49,7 +49,8 @@ handleTextChange= (e)=>{
 confirmClose= ()=>{
 	this.setState({confirm:true}, ()=>{this.props.close();})
 }
-cancelClose= ()=>{
+cancelClose= (e)=>{
+	e.preventDefault();
 	this.setState({cancel:false})
 }
   render() {
@@ -93,12 +94,13 @@ cancelClose= ()=>{
 			<Dialog
 			  open={this.state.cancel}
 			  onClose={this.confirmClose}
+			  disableBackdropClick='true'
 			 >
 			<DialogTitle>
 			Are u sure
 			</DialogTitle>
 			<DialogContent>
-				If you press Yes all changes will discard!
+				Yes - discard all changes! Nope - Cancel
 			</DialogContent>
 			<DialogActions>
 			 <Button onClick={this.confirmClose}>Yes</Button>
