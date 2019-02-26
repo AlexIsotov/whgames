@@ -3,14 +3,11 @@ import MainRoutes from './routes/MainRoutes';
 
 class App extends Component {
 
-
   render() {
-	  
-   return (
-   	<div>
-	  <MainRoutes />
-	</div>
-
+    return (
+    <div>
+  	  <MainRoutes />
+  	</div>
     );
   }
 }

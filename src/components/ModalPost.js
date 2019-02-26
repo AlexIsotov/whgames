@@ -13,81 +13,76 @@ import Collapse from '@material-ui/core/Collapse';
 
 const styles = {
 closeButton: {
-    position: 'absolute',
+  position: 'absolute',
 	right:0,
-	top:0,
-	},
+	top:0
+},
 commentsSection:{
 	marginTop: 5,
-	borderTop: '1px solid gainsboro',
-	},
+	borderTop: '1px solid gainsboro'
+},
 commentsHeader: {
 	display: 'flex',
-	justifyContent: 'space-between',
+	justifyContent: 'space-between'
 },
 expand: {
 	transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    },
+  marginLeft: 'auto'
+},
 expandOpen: {
-    transform: 'rotate(180deg)',
-  },
- 
+  transform: 'rotate(180deg)',
+},
 }
-
 
 class ModalPost extends Component {
-constructor(props){
-	super(props);
-	this.state={expanded:false};
-}
+  constructor(props){
+	   super(props);
+	   this.state={expanded:false};
+  }
 
-handleExpandClick = () => {
+  handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   };
-  
-closeModal=()=>{
-	this.props.close();
-}
-  render() {
-	  
-   return (
-   	<div>
-          <DialogTitle id="alert-dialog-title" >
-			{this.props.title}
-			<IconButton aria-label="Close" className={this.props.classes.closeButton} onClick={this.closeModal}>
-				<CloseIcon />
-			</IconButton>
-		  </DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-			{this.props.text}
-            </DialogContentText>
-			<div className={this.props.classes.commentsSection}>
-				<div className={this.props.classes.commentsHeader}>
-					<Typography variant='h5' color='default'> Comments </Typography>
-					<Tooltip title="Show admin comments">
-					  <IconButton
-						className={classnames(this.props.classes.expand, {
-						  [this.props.classes.expandOpen]: this.state.expanded,
-						})}
-						onClick={this.handleExpandClick}
-						aria-expanded={this.state.expanded}
-						aria-label="Show more"
-					  >
-						<ExpandMoreIcon />
-					  </IconButton>
-					 </Tooltip>
-				 </div>
-				<Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-				  	<Typography paragraph>Username:</Typography>
-					<Typography paragraph>User comment!</Typography>
-				</Collapse>
-			</div>	
-		  </DialogContent>
-          
-	</div>
 
+  closeModal=()=>{
+	   this.props.close();
+  }
+  render() {
+	  return (
+     	<div>
+        <DialogTitle id="alert-dialog-title" >
+    			{this.props.title}
+    			<IconButton aria-label="Close" className={this.props.classes.closeButton} onClick={this.closeModal}>
+    				<CloseIcon />
+    			</IconButton>
+  		  </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+  			     {this.props.text}
+          </DialogContentText>
+  			  <div className={this.props.classes.commentsSection}>
+  				    <div className={this.props.classes.commentsHeader}>
+  					       <Typography variant='h5' color='default'> Comments </Typography>
+  					       <Tooltip title="Show admin comments">
+  					            <IconButton
+  						           className={classnames(this.props.classes.expand, {
+  						           [this.props.classes.expandOpen]: this.state.expanded,
+  						           })}
+              						onClick={this.handleExpandClick}
+              						aria-expanded={this.state.expanded}
+              						aria-label="Show more"
+              					  >
+  						              <ExpandMoreIcon />
+  					             </IconButton>
+  					         </Tooltip>
+  				     </div>
+      				 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+      				  	<Typography paragraph>Username:</Typography>
+      					  <Typography paragraph>User comment!</Typography>
+      				 </Collapse>
+  			  </div>
+  		  </DialogContent>
+      </div>
     );
   }
 }
