@@ -60,61 +60,60 @@ constructor(props){
 					}
 }
 
-
 handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   };
-  
+
 like=()=>{
 	this.setState({like: !this.state.like})
-}; 
+};
 
 handleOpen = () => {
      this.setState({ open: true });
-  };
+};
 
 handleClose = () => {
     this.setState({ open: false });
-  };
+};
 
 openCardMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
-  };
+};
 
 closeCardMenu = () => {
     this.setState({ anchorEl: null });
-  }; 
+};
+
 hide=()=>{
 	this.setState({hidden: true,  anchorEl: null });
-}  
+}
   render() {
-	  const { classes } = this.props;
+	 const { classes } = this.props;
 	 return (
    	<Card className={classes.card} hidden={this.state.hidden}>
         <CardHeader
           action={
-			<Tooltip title="Actions">
-            <IconButton onClick={this.openCardMenu}>
-              <MoreVertIcon />
-            </IconButton>
-			</Tooltip>
+			      <Tooltip title="Actions">
+              <IconButton onClick={this.openCardMenu}>
+                <MoreVertIcon />
+              </IconButton>
+			      </Tooltip>
           }
           title={this.props.title}
           subheader={this.props.date}
         />
-		 <Menu
+		    <Menu
           id="menu"
           anchorEl={this.state.anchorEl}
           open={Boolean(this.state.anchorEl)}
           onClose={this.closeCardMenu}
-          >
+        >
             <MenuItem onClick={this.hide}>
-             <ClearIcon /> Hide 
+             <ClearIcon /> Hide
             </MenuItem>
-			<MenuItem >
+			      <MenuItem >
               <CreateIcon />Edit
             </MenuItem>
-          
         </Menu>
         <CardMedia
           className={classes.media}
@@ -123,21 +122,21 @@ hide=()=>{
         />
         <CardContent>
           <Typography component="p">
-           {this.props.readMore? this.props.readMore.slice(0,50)+'...' : 'Здесь пока нет описания, но оно будет! Обязательно!'} 
+           {this.props.readMore? this.props.readMore.slice(0,50)+'...' : 'Здесь пока нет описания, но оно будет! Обязательно!'}
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
          <Tooltip title="Like it!">
-		 <IconButton onClick={this.like} aria-label="Add to favorites">
+		      <IconButton onClick={this.like} aria-label="Add to favorites">
             <FavoriteIcon color={this.state.like===true? 'primary': 'inherit'} />
           </IconButton>
-		 </Tooltip>
-		 <Tooltip title="Read more!">
+		     </Tooltip>
+		     <Tooltip title="Read more!">
           <IconButton onClick={this.handleOpen} aria-label="Open">
             <OpenInNewIcon />
           </IconButton>
-		 </Tooltip>
-		 <Tooltip title="Show admin comments">
+		     </Tooltip>
+		     <Tooltip title="Show admin comments">
           <IconButton
             className={classnames(classes.expand, {
               [classes.expandOpen]: this.state.expanded,
@@ -148,31 +147,28 @@ hide=()=>{
           >
             <ExpandMoreIcon />
           </IconButton>
-		 </Tooltip>
+		     </Tooltip>
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>InfoComment:</Typography>
             <Typography paragraph>
-			Очень полезное описание с остроумными комментариями!!!
+			         Очень полезное описание с остроумными комментариями!!!
             </Typography>
           </CardContent>
         </Collapse>
-			{this.state.open!==false && 
-			<Dialog
-			  open={this.state.open}
-			  onClose={this.handleClose}
-			  aria-labelledby="alert-dialog-title"
-			  aria-describedby="alert-dialog-description"
-			  scroll='body'
-			>
-			  <ModalPost title={this.props.title} text={this.props.readMore} close={this.handleClose}/>
-			 </Dialog>
-			}
-		 
-		
+			  {this.state.open!==false &&
+    			<Dialog
+    			  open={this.state.open}
+    			  onClose={this.handleClose}
+    			  aria-labelledby="alert-dialog-title"
+    			  aria-describedby="alert-dialog-description"
+    			  scroll='body'
+    			>
+  			     <ModalPost title={this.props.title} text={this.props.readMore} close={this.handleClose}/>
+  			  </Dialog>
+			  }
       </Card>
-
     );
   }
 }

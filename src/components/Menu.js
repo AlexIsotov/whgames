@@ -10,15 +10,12 @@ import Divider from '@material-ui/core/Divider';
 
 class Menu extends Component {
 
-
   render() {
-	  
-
    return (
    	<div>
- 		<List>
+ 		 <List>
 			  <Divider />
-			  {this.props.login!==true? 
+			  {this.props.login!==true?
 				<ListItem button onClick={this.props.signIn}>
 					<ListItemIcon><PowerSettingsNewIcon /></ListItemIcon>
 					<ListItemText primary='Sign in'/>
@@ -40,12 +37,11 @@ class Menu extends Component {
 					  </ListItem>
 				</div>
 				}
-              
-			  <Divider />
-          </List>
-	</div>
+        <Divider />
+      </List>
+    </div>
     );
   }
 }
 
-export default (Menu);
+export default Menu;

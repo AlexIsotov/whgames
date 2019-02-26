@@ -16,71 +16,71 @@ constructor(props){
 		passwrd:'',
 		};
 }
+
 close=()=>{
 	this.setState({open: false});
 	this.props.closeLoginBox();
-}
+};
+
 handleEmailChange=(e)=>{
 	this.setState({email: e.target.value});
-}
+};
+
 handlePasswordChange=(e)=>{
 	this.setState({passwrd: e.target.value});
-}
-  render() {
-	  
-   return (
-   	<div>
-          <Dialog
-			  open={this.state.open}
-			  onClose={this.close}
-			  >
-			<DialogTitle>
-			Log in
-			</DialogTitle>
-			<DialogContent>
-			<form>
-				<TextField
-				  id="email"
-				  label="Email"
-				  value={this.state.email}
-				  onChange={this.handleEmailChange}
-				  margin="normal"
-				  variant="outlined"
-				  fullWidth='true'
-				  required
-				  autoFocus
-				  autoComplete='off'
-				  type='email'
-				/>
-				
-				<TextField
-				  id="passwrd"
-				  label="Password"
-				  value={this.state.text}
-				  onChange={this.handlePasswordChange}
-				  margin="normal"
-				  variant="outlined"
-				  fullWidth='true'
-				  required
-				  autoComplete='off'
-				  type='password'
-				  />
-			</form>
-			</DialogContent>
-			<DialogActions>
-			<Tooltip title='Discard changes and exit'>
-			 <Button color='primary' onClick={this.close}>Accept</Button>
-			</Tooltip>
-			<Tooltip title='Cancel'>
-			 <Button color='secondary' onClick={this.close}>Cancel</Button>
-			</Tooltip>
-			</DialogActions>
-			</Dialog>
-          
-	</div>
+};
 
+  render() {
+	  return (
+   		<div>
+          <Dialog
+					 open={this.state.open}
+					 onClose={this.close}
+					>
+						<DialogTitle>
+						Log in
+						</DialogTitle>
+						<DialogContent>
+							<form>
+								<TextField
+								  id="email"
+								  label="Email"
+								  value={this.state.email}
+								  onChange={this.handleEmailChange}
+								  margin="normal"
+								  variant="outlined"
+								  fullWidth='true'
+								  required
+								  autoFocus
+								  autoComplete='off'
+								  type='email'
+								/>
+								<TextField
+								  id="passwrd"
+								  label="Password"
+								  value={this.state.text}
+								  onChange={this.handlePasswordChange}
+								  margin="normal"
+								  variant="outlined"
+								  fullWidth='true'
+								  required
+								  autoComplete='off'
+								  type='password'
+								  />
+							</form>
+						</DialogContent>
+						<DialogActions>
+							<Tooltip title='Discard changes and exit'>
+							 <Button color='primary' onClick={this.close}>Accept</Button>
+							</Tooltip>
+							<Tooltip title='Cancel'>
+							 <Button color='secondary' onClick={this.close}>Cancel</Button>
+							</Tooltip>
+						</DialogActions>
+			</Dialog>
+		</div>
     );
   }
 }
 
-export default (LoginBox);
+export default LoginBox;
