@@ -12,7 +12,14 @@ import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
+import { connect } from "react-redux";
+import { addPost } from "../js/actions/actions";
 
+function mapDispatchToProps(dispatch) {
+  return {
+    addPost: post => dispatch(addPost(post))
+  };
+}
 const styles = {
 closeButton: {
   position: 'absolute',
@@ -21,7 +28,7 @@ closeButton: {
 	},
 }
 
-class AddNewPost extends Component {
+class AddNewPostS extends Component {
   constructor(props){
   	super(props);
   	this.state={
@@ -55,6 +62,14 @@ cancelClose=(e)=>{
 	e.preventDefault();
 	this.setState({cancel:false})
 }
+
+handleSubmit(e) {
+  e.preventDefault();
+   const { title, text } = this.state;
+   this.props.addPost({ title, text });
+   this.setState({ title: '', text:'' }, ()=> this.confirmClose());
+ }
+
   render() {
 	  return (
    	<div>
@@ -66,7 +81,7 @@ cancelClose=(e)=>{
 		      </DialogTitle>
           <DialogContent>
             <DialogContentText>
-      			<form>
+      			<form onSubmit={(e)=>this.handleSubmit(e)}>
       				<TextField
       				  id="newPost-title"
       				  label="Title"
@@ -97,6 +112,7 @@ cancelClose=(e)=>{
         					<Fab color='primary' size='large'> <AddIcon /> </Fab>
         				</Tooltip>
       				</div>
+              <Button type='submit' variant='contained' color='primary'> Add post </Button>
       				</form>
             </DialogContentText>
 					</DialogContent>
@@ -121,12 +137,11 @@ cancelClose=(e)=>{
       			</DialogActions>
       			</Dialog>
         <DialogActions>
-    			<Button variant='contained' color='primary'> Add post </Button>
     			<Button variant='contained' color='secondary' onClick={this.closeModal}> Cancel </Button>
   		 </DialogActions>
 	  </div>
     );
   }
 }
-
+const AddNewPost=connect(null, mapDispatchToProps)(AddNewPostS);
 export default withStyles(styles)(AddNewPost);
