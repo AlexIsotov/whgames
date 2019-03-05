@@ -73,8 +73,18 @@ getScreen=(val)=>{
 };
 
 addNewPost=()=>{
-	this.setState({addNewPost:true})
-};
+  const options={
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'long',
+    timezone: 'UTC',
+    hour: 'numeric',
+    minute: 'numeric'
+  }
+  const date =new Date();
+	this.setState({addNewPost:true, date: date.toLocaleString('ru', options)})
+  };
 
 handleClose = () => {
     this.setState({ addNewPost: false });
@@ -145,7 +155,7 @@ loginBoxClose=()=>{
         			  scroll='body'
         			   disableBackdropClick='true'
         			>
-        			  <AddNewPost close={this.handleClose}/>
+        			  <AddNewPost close={this.handleClose} date={this.state.date}/>
         			</Dialog>
   			    }
   			    {this.state.loginBox===true &&

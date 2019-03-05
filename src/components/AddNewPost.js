@@ -66,7 +66,8 @@ cancelClose=(e)=>{
 handleSubmit(e) {
   e.preventDefault();
    const { title, text } = this.state;
-   this.props.addPost({ title, text });
+   const {date} = this.props;
+   this.props.addPost({ title, text, date });
    this.setState({ title: '', text:'' }, ()=> this.confirmClose());
  }
 
