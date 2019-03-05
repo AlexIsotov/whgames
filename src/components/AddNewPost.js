@@ -112,8 +112,11 @@ handleSubmit(e) {
         					<Fab color='primary' size='large'> <AddIcon /> </Fab>
         				</Tooltip>
       				</div>
-              <Button type='submit' variant='contained' color='primary'> Add post </Button>
-      				</form>
+              <DialogActions>
+                <Button type='submit' variant='contained' color='primary'> Add post </Button>
+                <Button variant='contained' color='secondary' onClick={this.closeModal}> Cancel </Button>
+              </DialogActions>
+              </form>
             </DialogContentText>
 					</DialogContent>
 			    <Dialog
@@ -136,9 +139,7 @@ handleSubmit(e) {
         			</Tooltip>
       			</DialogActions>
       			</Dialog>
-        <DialogActions>
-    			<Button variant='contained' color='secondary' onClick={this.closeModal}> Cancel </Button>
-  		 </DialogActions>
+
 	  </div>
     );
   }
