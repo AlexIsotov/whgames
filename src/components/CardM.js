@@ -121,8 +121,8 @@ hide=()=>{
           title="img"
         />
         <CardContent>
-          <Typography component="p">
-           {this.props.readMore? this.props.readMore.slice(0,50)+'...' : 'Здесь пока нет описания, но оно будет! Обязательно!'}
+          <Typography noWrap component="p">
+           {this.props.readMore? this.props.readMore.slice() : 'Здесь пока нет описания, но оно будет! Обязательно!'}
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
