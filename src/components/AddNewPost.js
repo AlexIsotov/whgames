@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,11 +12,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import { connect } from "react-redux";
-import { addPost } from "../js/actions/actions";
+import { createPost } from "../js/actions/actions";
 
 function mapDispatchToProps(dispatch) {
   return {
-    addPost: post => dispatch(addPost(post))
+    createPost: post => dispatch(createPost(post))
   };
 }
 const styles = {
@@ -67,7 +66,7 @@ handleSubmit(e) {
   e.preventDefault();
    const { title, text } = this.state;
    const {date} = this.props;
-   this.props.addPost({ title, text, date });
+   this.props.createPost({ title, text, date });
    this.setState({ title: '', text:'' }, ()=> this.confirmClose());
  }
 
@@ -81,8 +80,7 @@ handleSubmit(e) {
 			       </IconButton>
 		      </DialogTitle>
           <DialogContent>
-            <DialogContentText>
-      			<form onSubmit={(e)=>this.handleSubmit(e)}>
+            <form onSubmit={(e)=>this.handleSubmit(e)}>
       				<TextField
       				  id="newPost-title"
       				  label="Title"
@@ -90,7 +88,7 @@ handleSubmit(e) {
       				  onChange={this.handleTitleChange}
       				  margin="normal"
       				  variant="outlined"
-      				  fullWidth='true'
+      				  fullWidth={true}
       				  required
       				  autoFocus
       				  autoComplete='off'
@@ -103,7 +101,7 @@ handleSubmit(e) {
       				  onChange={this.handleTextChange}
       				  margin="normal"
       				  variant="outlined"
-      				  fullWidth='true'
+      				  fullWidth={true}
       				  required
       				  multiline
       				  rows='6'
@@ -118,12 +116,11 @@ handleSubmit(e) {
                 <Button variant='contained' color='secondary' onClick={this.closeModal}> Cancel </Button>
               </DialogActions>
               </form>
-            </DialogContentText>
 					</DialogContent>
 			    <Dialog
     			  open={this.state.cancel}
     			  onClose={this.confirmClose}
-    			  disableBackdropClick='true'
+    			  disableBackdropClick={true}
     			 >
 			      <DialogTitle>
 			          Are u sure

@@ -153,7 +153,7 @@ loginBoxClose=()=>{
         			  aria-labelledby="alert-dialog-title"
         			  aria-describedby="alert-dialog-description"
         			  scroll='body'
-        			   disableBackdropClick='true'
+        			  disableBackdropClick={true}
         			>
         			  <AddNewPost close={this.handleClose} date={this.state.date}/>
         			</Dialog>
