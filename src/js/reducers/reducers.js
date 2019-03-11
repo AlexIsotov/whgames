@@ -2,7 +2,7 @@ import { ADD_POST, FETCH_POST } from "../constants/action-types";
 const initialState = {
   posts: []
 };
-function rootReducer(state = initialState, action) {
+function postReducer(state = initialState, action) {
   if (action.type === ADD_POST) {
     return Object.assign({}, state, {
       posts: state.posts.concat(action.payload)
@@ -16,4 +16,4 @@ function rootReducer(state = initialState, action) {
   }
   return state;
 }
-export default rootReducer;
+export default postReducer;

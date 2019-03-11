@@ -151,9 +151,9 @@ hide=()=>{
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>InfoComment:</Typography>
+            <Typography paragraph>Админ вещает:</Typography>
             <Typography paragraph>
-			         Очень полезное описание с остроумными комментариями!!!
+			         {this.props.infoComment? this.props.infoComment : 'Админ нейтрален, ничего не может сказать...'}
             </Typography>
           </CardContent>
         </Collapse>

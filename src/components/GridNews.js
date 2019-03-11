@@ -8,7 +8,7 @@ const mapStateToProps = state => {
   return { posts: state.posts };
 };
 const GridSystem = ({posts}) => { return (
-  posts.slice().reverse().map(el => (
+  posts.length>0 && posts.slice().reverse().map(el => (
     <Grid item key={el.id} zeroMinWidth>
        <CardM wrap="nowrap" readMore={el.text} title={el.title} date={el.date} />
     </Grid>

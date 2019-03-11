@@ -3,11 +3,16 @@ import axios from 'axios';
 import qs from 'qs';
 import {apiUrl} from '../constants/url';
 
-
-export function addPost(payload) {
-  return { type: ADD_POST, payload }
+export const createPostSuccess =  (data) => {
+  return {
+    type: ADD_POST,
+    payload: {
+      date: data.date,
+      title: data.title,
+      text: data.text,
+    }
+  }
 };
-
 export const createPost = ({ date, title, text }) => {
 
   return (dispatch) => {
@@ -28,18 +33,6 @@ export const createPost = ({ date, title, text }) => {
     };
 };
 
-export const createPostSuccess =  (data) => {
-  return {
-    type: ADD_POST,
-    payload: {
-
-      date: data.date,
-      title: data.title,
-      text: data.text,
-
-    }
-  }
-};
 export const fetchPosts = (posts) => {
   return {
     type: FETCH_POST,
@@ -56,7 +49,6 @@ export const fetchAllPosts = () => {
     };
     return axios(options)
       .then(response => {
-        console.log(response);
         dispatch(fetchPosts(response.data))
       })
       .catch(error => {

@@ -33,6 +33,7 @@ class AddNewPostS extends Component {
   	this.state={
   		title:'',
   		text:'',
+      infoComment:'',
   		confirm: false,
   		cancel: false,
   	};
@@ -51,6 +52,10 @@ handleTitleChange=(e)=>{
 
 handleTextChange=(e)=>{
 	this.setState({text: e.target.value})
+};
+
+handleInfoCommentChange=(e)=>{
+	this.setState({infoComment: e.target.value})
 };
 
 confirmClose=()=>{
@@ -111,6 +116,18 @@ handleSubmit(e) {
         					<Fab color='primary' size='large'> <AddIcon /> </Fab>
         				</Tooltip>
       				</div>
+              <TextField
+      				  id="newPost-infoComment"
+      				  label="Ваше мнение, оно ооочень важно остальным"
+      				  value={this.state.infoComment}
+      				  onChange={this.handleInfoCommentChange}
+      				  margin="normal"
+      				  variant="outlined"
+      				  fullWidth={true}
+      				  required
+      				  multiline
+      				  rows='6'
+      				/>
               <DialogActions>
                 <Button type='submit' variant='contained' color='primary'> Add post </Button>
                 <Button variant='contained' color='secondary' onClick={this.closeModal}> Cancel </Button>
