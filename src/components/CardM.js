@@ -21,6 +21,7 @@ import ModalPost from './ModalPost';
 import Tooltip from '@material-ui/core/Tooltip'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import {apiUrl} from '../js/constants/url'
 
 const styles = theme => ({
   card: {
@@ -90,7 +91,7 @@ hide=()=>{
   render() {
 	 const { classes } = this.props;
 	 return (
-   	<Card className={classes.card} hidden={this.state.hidden}>
+   	<Card className={classes.card} hidden={this.state.hidden} key={this.props.key}>
         <CardHeader
           action={
 			      <Tooltip title="Actions">
@@ -116,9 +117,9 @@ hide=()=>{
             </MenuItem>
         </Menu>
         <CardMedia
-          className={classes.media}
-          image={this.props.img}
-          title="img"
+            className={classes.media}
+            image={this.props.img? apiUrl+'/uploads/'+this.props.img : 'https://image.freepik.com/free-icon/no-translate-detected_318-41849.jpg'}
+            title="img"
         />
         <CardContent>
           <Typography noWrap component="p">

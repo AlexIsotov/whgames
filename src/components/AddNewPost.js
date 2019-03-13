@@ -36,6 +36,7 @@ class AddNewPostS extends Component {
       infoComment:'',
   		confirm: false,
   		cancel: false,
+      files:{},
   	};
   }
 
@@ -58,6 +59,10 @@ handleInfoCommentChange=(e)=>{
 	this.setState({infoComment: e.target.value})
 };
 
+handleFilesChange=(e)=>{
+    this.setState({files : e.target.files});
+};
+
 confirmClose=()=>{
 	this.setState({confirm:true}, ()=>{this.props.close();})
 };
@@ -71,8 +76,14 @@ handleSubmit(e) {
   e.preventDefault();
    const { title, text } = this.state;
    const {date} = this.props;
-   this.props.createPost({ title, text, date });
-   this.setState({ title: '', text:'' }, ()=> this.confirmClose());
+   const formData = new FormData();
+   for(let i=0; i<this.state.files.length; i++){
+     let file = this.state.files[i];
+     formData.append('files[]', file);
+   };
+   console.log(formData);
+   this.props.createPost({ title, text, date, formData });
+   this.setState({ title: '', text:'', infoComment:'', files:{} }, ()=> this.confirmClose());
  }
 
   render() {
@@ -111,10 +122,23 @@ handleSubmit(e) {
       				  multiline
       				  rows='6'
       				/>
+
       				<div style={{display:'flex', justifyContent: 'center'}}>
-        				<Tooltip title='Add image'>
-        					<Fab color='primary' size='large'> <AddIcon /> </Fab>
-        				</Tooltip>
+                <input
+                accept="image/*"
+                id="button-file"
+                multiple
+                type="file"
+                style={{display:'none'}}
+                onChange={this.handleFilesChange}
+                />
+                <label htmlFor="button-file">
+                  <Tooltip title='Add image'>
+                    <Fab component='span' color='primary' size='large'>
+                      <AddIcon />
+                    </Fab>
+                  </Tooltip>
+                </label>
       				</div>
               <TextField
       				  id="newPost-infoComment"
@@ -124,9 +148,8 @@ handleSubmit(e) {
       				  margin="normal"
       				  variant="outlined"
       				  fullWidth={true}
-      				  required
       				  multiline
-      				  rows='6'
+      				  rows='5'
       				/>
               <DialogActions>
                 <Button type='submit' variant='contained' color='primary'> Add post </Button>

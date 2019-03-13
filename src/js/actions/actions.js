@@ -10,22 +10,35 @@ export const createPostSuccess =  (data) => {
       date: data.date,
       title: data.title,
       text: data.text,
+      file: data.file,
     }
   }
 };
-export const createPost = ({ date, title, text }) => {
+export const createPost = ({ date, title, text, formData }) => {
 
   return (dispatch) => {
-      const data = ({'date':date, 'title':title, 'text':text});
-      const options = {
+    console.log(formData);
+      const optionsFile = {
         method: 'POST',
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
-        data: qs.stringify(data),
-        url:apiUrl+'/addPost.php',
+        data: formData,
+        url:apiUrl+'/scripts/uploadFiles.php',
       };
-      return axios(options)
+      return axios(optionsFile)
        .then(response => {
-         dispatch(createPostSuccess(response.data))
+
+         const data = ({'date':date, 'title':title, 'text':text, 'file': response.data});
+         const options = {
+           method: 'POST',
+           headers: { 'content-type': 'application/x-www-form-urlencoded' },
+           data: qs.stringify(data),
+           url:apiUrl+'/scripts/addPost.php',
+         };
+         axios(options)
+         .then(response =>{
+           console.log(response);
+          dispatch(createPostSuccess(response.data));
+         })
        })
        .catch(error => {
          throw(error);
@@ -45,7 +58,7 @@ export const fetchAllPosts = () => {
     const options = {
       method: 'GET',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      url:apiUrl+'/selectPosts.php',
+      url:apiUrl+'/scripts/selectPosts.php',
     };
     return axios(options)
       .then(response => {
