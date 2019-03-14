@@ -27,7 +27,7 @@ const styles = {
 	  flex: '1 0 auto',
   },
   grow: {
-    flexGrow: 1,
+    flexGrow: 2,
   },
   bar: {
 	   backgroundColor: '#fff176',
@@ -37,7 +37,6 @@ const styles = {
     marginRight: 20,
   },
   drawer: {
-    width: drawerWidth,
     flexShrink: 0,
   },
   drawerPaper: {

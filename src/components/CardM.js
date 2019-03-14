@@ -25,8 +25,8 @@ import {apiUrl} from '../js/constants/url'
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
-  },
+   
+    },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
@@ -43,9 +43,6 @@ const styles = theme => ({
   },
   expandOpen: {
     transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
   },
 });
 

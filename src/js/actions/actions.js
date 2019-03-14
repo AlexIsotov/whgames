@@ -11,13 +11,12 @@ export const createPostSuccess =  (data) => {
       title: data.title,
       text: data.text,
       file: data.file,
+      infoComment: data.infoComment,
     }
   }
 };
-export const createPost = ({ date, title, text, formData }) => {
-
+export const createPost = ({ date, title, text, formData, infoComment }) => {
   return (dispatch) => {
-    console.log(formData);
       const optionsFile = {
         method: 'POST',
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -26,8 +25,7 @@ export const createPost = ({ date, title, text, formData }) => {
       };
       return axios(optionsFile)
        .then(response => {
-
-         const data = ({'date':date, 'title':title, 'text':text, 'file': response.data});
+         const data = ({'date':date, 'title':title, 'text':text, 'file': response.data, 'infoсomment': infoComment});
          const options = {
            method: 'POST',
            headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -36,7 +34,6 @@ export const createPost = ({ date, title, text, formData }) => {
          };
          axios(options)
          .then(response =>{
-           console.log(response);
           dispatch(createPostSuccess(response.data));
          })
        })

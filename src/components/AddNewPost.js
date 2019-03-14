@@ -74,15 +74,14 @@ cancelClose=(e)=>{
 
 handleSubmit(e) {
   e.preventDefault();
-   const { title, text } = this.state;
+   const { title, text, infoComment } = this.state;
    const {date} = this.props;
    const formData = new FormData();
    for(let i=0; i<this.state.files.length; i++){
      let file = this.state.files[i];
      formData.append('files[]', file);
    };
-   console.log(formData);
-   this.props.createPost({ title, text, date, formData });
+   this.props.createPost({ title, text, date, formData, infoComment });
    this.setState({ title: '', text:'', infoComment:'', files:{} }, ()=> this.confirmClose());
  }
 

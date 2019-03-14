@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import CardM from './CardM';
-import Grid from '@material-ui/core/Grid';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return { posts: state.posts };
 };
-const GridSystem = ({posts}) => { return (
-  posts.length>0 && posts.slice().reverse().map(el => (
-    <div key={el.id}>
-      <Grid item zeroMinWidth>
-         <CardM wrap="nowrap" readMore={el.text} title={el.title} date={el.date} img={el.file}/>
-      </Grid>
-    </div>
-  )))
-}
-const GridView = connect(mapStateToProps)(GridSystem);
-class GridNews extends Component {
 
+
+
+class GridNews extends Component {
   render() {
+   const { classes, posts } = this.props;
    return (
    	<div>
-     <Grid container alignContent='center' justify='space-around' spacing={8}>
-          <GridView />
-  	 </Grid>
+     <GridList cellHeight='auto' cols={2}>
+     {posts.length>0 && posts.slice().reverse().map(el => (
+         <GridListTile key={el.id} cols={1}>
+            <CardM wrap="nowrap" readMore={el.text} title={el.title} date={el.date} img={el.file} infoComment={el.infoComment}/>
+         </GridListTile>
+      ))
+     }
+  	 </GridList>
    </div>
     );
   }
 }
 
-export default (GridNews);
+export default connect(mapStateToProps)(GridNews);
