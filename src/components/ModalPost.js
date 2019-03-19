@@ -10,6 +10,7 @@ import classnames from 'classnames';
 import Tooltip from '@material-ui/core/Tooltip'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
+import {apiUrl} from '../js/constants/url'
 
 const styles = {
 closeButton: {
@@ -32,6 +33,14 @@ expand: {
 expandOpen: {
   transform: 'rotate(180deg)',
 },
+imgContainer:{
+  display:'flex',
+  justifyContent: 'center'
+},
+image:{
+  width:'75%',
+  height: '50%'
+}
 }
 
 class ModalPost extends Component {
@@ -57,6 +66,9 @@ class ModalPost extends Component {
     			</IconButton>
   		  </DialogTitle>
         <DialogContent>
+          <div style={styles.imgContainer}>
+            <img style={styles.image} src={this.props.img? apiUrl+'/uploads/'+this.props.img : 'https://image.freepik.com/free-icon/no-translate-detected_318-41849.jpg'} alt='postImg'/>
+          </div>
           <DialogContentText id="alert-dialog-description">
   			     {this.props.text}
           </DialogContentText>

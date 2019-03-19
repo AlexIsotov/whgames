@@ -9,7 +9,6 @@ import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -25,11 +24,11 @@ import {apiUrl} from '../js/constants/url'
 
 const styles = theme => ({
   card: {
-   
-    },
+   padding: 0
+  },
   media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
+   height: 250,
+
   },
   actions: {
     display: 'flex',
@@ -89,17 +88,7 @@ hide=()=>{
 	 const { classes } = this.props;
 	 return (
    	<Card className={classes.card} hidden={this.state.hidden} key={this.props.key}>
-        <CardHeader
-          action={
-			      <Tooltip title="Actions">
-              <IconButton onClick={this.openCardMenu}>
-                <MoreVertIcon />
-              </IconButton>
-			      </Tooltip>
-          }
-          title={this.props.title}
-          subheader={this.props.date}
-        />
+
 		    <Menu
           id="menu"
           anchorEl={this.state.anchorEl}
@@ -117,6 +106,17 @@ hide=()=>{
             className={classes.media}
             image={this.props.img? apiUrl+'/uploads/'+this.props.img : 'https://image.freepik.com/free-icon/no-translate-detected_318-41849.jpg'}
             title="img"
+        />
+        <CardHeader
+        action={
+            <Tooltip title="Actions">
+              <IconButton onClick={this.openCardMenu}>
+                <MoreVertIcon />
+              </IconButton>
+            </Tooltip>
+          }
+          title={this.props.title}
+          subheader={this.props.date}
         />
         <CardContent>
           <Typography noWrap component="p">
@@ -162,8 +162,10 @@ hide=()=>{
     			  aria-labelledby="alert-dialog-title"
     			  aria-describedby="alert-dialog-description"
     			  scroll='body'
-    			>
-  			     <ModalPost title={this.props.title} text={this.props.readMore} close={this.handleClose}/>
+            fullWidth
+            maxWidth={false}
+          >
+  			     <ModalPost title={this.props.title} text={this.props.readMore} close={this.handleClose} img={this.props.img}/>
   			  </Dialog>
 			  }
       </Card>
