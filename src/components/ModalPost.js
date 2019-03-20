@@ -35,7 +35,9 @@ expandOpen: {
 },
 imgContainer:{
   display:'flex',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  flexDirection: 'column',
+  alignItems: 'center'
 },
 image:{
   width:'75%',
@@ -67,7 +69,10 @@ class ModalPost extends Component {
   		  </DialogTitle>
         <DialogContent>
           <div style={styles.imgContainer}>
-            <img style={styles.image} src={this.props.img? apiUrl+'/uploads/'+this.props.img : 'https://image.freepik.com/free-icon/no-translate-detected_318-41849.jpg'} alt='postImg'/>
+        {this.props.img!=='""' && JSON.parse(this.props.img).map((el)=>{ return(
+          <img style={styles.image} src={apiUrl+'/uploads/'+el} alt='postImg'/>
+        )
+        })}
           </div>
           <DialogContentText id="alert-dialog-description">
   			     {this.props.text}

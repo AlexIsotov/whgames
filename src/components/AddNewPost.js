@@ -122,7 +122,7 @@ handleSubmit(e) {
       				  rows='6'
       				/>
 
-      				<div style={{display:'flex', justifyContent: 'center'}}>
+      				<div style={{display:'flex', justifyContent: 'center', alignItems:'center', flexDirection: 'column'}}>
                 <input
                 accept="image/*"
                 id="button-file"
@@ -138,6 +138,7 @@ handleSubmit(e) {
                     </Fab>
                   </Tooltip>
                 </label>
+                <p style={{color: 'gray'}}><small>{this.state.files.length>0 && 'Selected ' + this.state.files.length + ' image(s)'}</small></p>
       				</div>
               <TextField
       				  id="newPost-infoComment"

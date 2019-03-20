@@ -26,7 +26,7 @@ class GridNews extends Component {
   render() {
    const { posts } = this.props;
    return (
-   	<div>
+   	<div >
      <GridList cellHeight='auto' cols={this.state.cols} spacing={6}>
      {posts.length>0 && posts.slice().reverse().map(el => (
          <GridListTile key={el.id} cols={el.title.length>15 && this.state.cols===4?2:1} rows={1}>

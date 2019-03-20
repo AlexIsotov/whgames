@@ -24,7 +24,8 @@ import {apiUrl} from '../js/constants/url'
 
 const styles = theme => ({
   card: {
-   padding: 0
+   background: '#ffe082'
+
   },
   media: {
    height: 250,
@@ -104,7 +105,7 @@ hide=()=>{
         </Menu>
         <CardMedia
             className={classes.media}
-            image={this.props.img? apiUrl+'/uploads/'+this.props.img : 'https://image.freepik.com/free-icon/no-translate-detected_318-41849.jpg'}
+            image={this.props.img!=='""'? apiUrl+'/uploads/'+JSON.parse(this.props.img)[0] : 'https://image.freepik.com/free-icon/no-translate-detected_318-41849.jpg'}
             title="img"
         />
         <CardHeader
