@@ -28,12 +28,12 @@ class GridNews extends Component {
    return (
    	<div >
      <GridList cellHeight='auto' cols={this.state.cols} spacing={6}>
-     {posts.length>0 && posts.slice().reverse().map(el => (
-         <GridListTile key={el.id} cols={el.title.length>15 && this.state.cols===4?2:1} rows={1}>
-            <CardM readMore={el.text} title={el.title} date={el.date} img={el.file} infoComment={el.infoComment}/>
-         </GridListTile>
-      ))
-     }
+       {posts.length>0 && posts.slice().reverse().map(el => (
+           <GridListTile key={el.id} cols={el.title.length>15 && this.state.cols===4?2:1} rows={1}>
+              <CardM readMore={el.text} title={el.title} date={el.date} img={el.file} infoComment={el.infoComment}/>
+           </GridListTile>
+        ))
+       }
   	 </GridList>
    </div>
     );

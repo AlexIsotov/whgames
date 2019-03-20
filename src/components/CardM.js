@@ -24,12 +24,11 @@ import {apiUrl} from '../js/constants/url'
 
 const styles = theme => ({
   card: {
-   background: '#ffe082'
-
+   background: '#fffde7'
   },
   media: {
    height: 250,
-
+   margin: 0
   },
   actions: {
     display: 'flex',
@@ -44,6 +43,7 @@ const styles = theme => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
+
 });
 
 class CardM extends Component {

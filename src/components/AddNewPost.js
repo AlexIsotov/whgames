@@ -108,7 +108,6 @@ handleSubmit(e) {
       				  autoFocus
       				  autoComplete='off'
       				/>
-
       				<TextField
       				  id="newPost-text"
       				  label="Text"
@@ -121,7 +120,6 @@ handleSubmit(e) {
       				  multiline
       				  rows='6'
       				/>
-
       				<div style={{display:'flex', justifyContent: 'center', alignItems:'center', flexDirection: 'column'}}>
                 <input
                 accept="image/*"

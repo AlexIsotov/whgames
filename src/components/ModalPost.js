@@ -69,10 +69,10 @@ class ModalPost extends Component {
   		  </DialogTitle>
         <DialogContent>
           <div style={styles.imgContainer}>
-        {this.props.img!=='""' && JSON.parse(this.props.img).map((el)=>{ return(
-          <img style={styles.image} src={apiUrl+'/uploads/'+el} alt='postImg'/>
-        )
-        })}
+            {this.props.img!=='""' && JSON.parse(this.props.img).map((el)=>{ return(
+              <img style={styles.image} src={apiUrl+'/uploads/'+el} alt='postImg'/>
+            )
+            })}
           </div>
           <DialogContentText id="alert-dialog-description">
   			     {this.props.text}
