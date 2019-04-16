@@ -24,7 +24,8 @@ import {apiUrl} from '../js/constants/url'
 
 const styles = theme => ({
   card: {
-   background: '#fffde7'
+   background: '#FFFFE0',
+   border: '1px solid gainsboro'
   },
   media: {
    height: 250,

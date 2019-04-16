@@ -8,8 +8,6 @@ const mapStateToProps = state => {
   return { posts: state.posts };
 };
 
-
-
 class GridNews extends Component {
   constructor(props){
     super(props);
