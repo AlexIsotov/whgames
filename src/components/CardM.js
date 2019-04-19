@@ -20,6 +20,7 @@ import ModalPost from './ModalPost';
 import Tooltip from '@material-ui/core/Tooltip'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import EditPost from './EditPost';
 import {apiUrl} from '../js/constants/url'
 
 const styles = theme => ({
@@ -56,35 +57,40 @@ constructor(props){
 					open: false,
 					anchorEl: null,
 					hidden:false,
+          editMode: false
 					}
 }
 
 handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
-  };
+}
 
 like=()=>{
 	this.setState({like: !this.state.like})
-};
+}
 
 handleOpen = () => {
      this.setState({ open: true });
-};
+}
 
 handleClose = () => {
     this.setState({ open: false });
-};
+}
 
 openCardMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
-};
+}
 
 closeCardMenu = () => {
     this.setState({ anchorEl: null });
-};
+}
 
 hide=()=>{
 	this.setState({hidden: true,  anchorEl: null });
+}
+
+edit=()=>{
+  this.setState({editMode: !this.state.editMode});
 }
   render() {
 	 const { classes } = this.props;
@@ -100,7 +106,7 @@ hide=()=>{
             <MenuItem onClick={this.hide}>
              <ClearIcon /> Hide
             </MenuItem>
-			      <MenuItem >
+			      <MenuItem onClick={this.edit}>
               <CreateIcon />Edit
             </MenuItem>
         </Menu>
@@ -153,7 +159,7 @@ hide=()=>{
           <CardContent>
             <Typography paragraph>Админ вещает:</Typography>
             <Typography paragraph>
-			         {this.props.infoComment? this.props.infoComment : 'Админ нейтрален, ничего не может сказать...'}
+			         {this.props.infoComment? this.props.infoComment : 'Админ нейтрален(в шоке), ничего не может сказать...'}
             </Typography>
           </CardContent>
         </Collapse>
@@ -170,6 +176,16 @@ hide=()=>{
   			     <ModalPost title={this.props.title} text={this.props.readMore} close={this.handleClose} img={this.props.img}/>
   			  </Dialog>
 			  }
+        <Dialog
+          open={this.state.editMode}
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          scroll='body'
+          disableBackdropClick={false}
+        >
+          <EditPost close={this.edit} date={this.state.date} title={this.props.title} text={this.props.readMore} infoComment={this.props.infoComment}/>
+        </Dialog>
       </Card>
     );
   }

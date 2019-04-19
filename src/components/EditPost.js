@@ -27,7 +27,7 @@ closeButton: {
 	},
 }
 
-class AddNewPostS extends Component {
+class EditPost extends Component {
   constructor(props){
   	super(props);
   	this.state={
@@ -74,7 +74,7 @@ cancelClose=(e)=>{
 
 handleSubmit(e) {
   e.preventDefault();
-   const { title, text, infoComment } = this.state;
+  /* const { title, text, infoComment } = this.state;
    const {date} = this.props;
    const formData = new FormData();
    for(let i=0; i<this.state.files.length; i++){
@@ -82,14 +82,14 @@ handleSubmit(e) {
      formData.append('files[]', file);
    };
    this.props.createPost({ title, text, date, formData, infoComment });
-   this.setState({ title: '', text:'', infoComment:'', files:{} }, ()=> this.confirmClose());
+   this.setState({ title: '', text:'', infoComment:'', files:{} }, ()=> this.confirmClose());*/
  }
 
   render() {
 	  return (
    	<div>
           <DialogTitle>
-			       Add new post
+			       Edit post
 			       <IconButton aria-label="Close" className={this.props.classes.closeButton} onClick={this.closeModal}>
 				       <CloseIcon />
 			       </IconButton>
@@ -97,9 +97,9 @@ handleSubmit(e) {
           <DialogContent>
             <form onSubmit={(e)=>this.handleSubmit(e)}>
       				<TextField
-      				  id="newPost-title"
+      				  id="Post-title"
       				  label="Title"
-      				  value={this.state.title}
+      				  defaultValue={this.props.title}
       				  onChange={this.handleTitleChange}
       				  margin="normal"
       				  variant="outlined"
@@ -109,9 +109,9 @@ handleSubmit(e) {
       				  autoComplete='off'
       				/>
       				<TextField
-      				  id="newPost-text"
+      				  id="Post-text"
       				  label="Text"
-      				  value={this.state.text}
+      				  defaultValue={this.props.text}
       				  onChange={this.handleTextChange}
       				  margin="normal"
       				  variant="outlined"
@@ -120,28 +120,10 @@ handleSubmit(e) {
       				  multiline
       				  rows='6'
       				/>
-      				<div style={{display:'flex', justifyContent: 'center', alignItems:'center', flexDirection: 'column'}}>
-                <input
-                accept="image/*"
-                id="button-file"
-                multiple
-                type="file"
-                style={{display:'none'}}
-                onChange={this.handleFilesChange}
-                />
-                <label htmlFor="button-file">
-                  <Tooltip title='Add image'>
-                    <Fab component='span' color='primary' size='large'>
-                      <AddIcon />
-                    </Fab>
-                  </Tooltip>
-                </label>
-                <p style={{color: 'gray'}}><small>{this.state.files.length>0 && 'Selected ' + this.state.files.length + ' image(s)'}</small></p>
-      				</div>
-              <TextField
-      				  id="newPost-infoComment"
+      				<TextField
+      				  id="Post-infoComment"
       				  label="Ваше мнение, оно ооочень важно остальным"
-      				  value={this.state.infoComment}
+      				  value={this.props.infoComment}
       				  onChange={this.handleInfoCommentChange}
       				  margin="normal"
       				  variant="outlined"
@@ -150,7 +132,7 @@ handleSubmit(e) {
       				  rows='5'
       				/>
               <DialogActions>
-                <Button type='submit' variant='contained' color='primary'> Add post </Button>
+                <Button type='submit' variant='contained' color='primary'> Save </Button>
                 <Button variant='contained' color='secondary' onClick={this.closeModal}> Cancel </Button>
               </DialogActions>
               </form>
@@ -180,5 +162,5 @@ handleSubmit(e) {
     );
   }
 }
-const AddNewPost=connect(null, mapDispatchToProps)(AddNewPostS);
-export default withStyles(styles)(AddNewPost);
+{/*const AddNewPost=connect(null, mapDispatchToProps)(AddNewPostS);*/}
+export default withStyles(styles)(EditPost);
