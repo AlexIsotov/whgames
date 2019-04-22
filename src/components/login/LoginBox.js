@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 class LoginBox extends Component {
 constructor(props){
@@ -14,6 +16,7 @@ constructor(props){
 		open:true,
 		email:'',
 		passwrd:'',
+		checked: false,
 		};
 }
 
@@ -29,6 +32,10 @@ handleEmailChange=(e)=>{
 handlePasswordChange=(e)=>{
 	this.setState({passwrd: e.target.value});
 };
+
+check =()=>{
+	this.setState({checked: !this.state.checked});
+}
 
   render() {
 	  return (
@@ -67,6 +74,18 @@ handlePasswordChange=(e)=>{
 								  autoComplete='off'
 								  type='password'
 								  />
+									<FormControlLabel
+					          control={
+											<Checkbox
+					              checked={this.state.checked}
+					              onChange={this.check}
+					              value={this.state.checked}
+												color="primary"
+					            />
+					          }
+					          label="Stay online"
+										style={{color: 'gainsboro'}}
+					        />
 							</form>
 						</DialogContent>
 						<DialogActions>
