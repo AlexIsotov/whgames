@@ -9,7 +9,6 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
-import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import { connect } from "react-redux";
 import { createPost } from "../js/actions/actions";

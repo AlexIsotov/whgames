@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Link from '@material-ui/core/Link';
 
 class LoginBox extends Component {
 constructor(props){
@@ -45,7 +46,7 @@ check =()=>{
 					 onClose={this.close}
 					>
 						<DialogTitle>
-						Log in
+						Sign in
 						</DialogTitle>
 						<DialogContent>
 							<form>
@@ -56,7 +57,7 @@ check =()=>{
 								  onChange={this.handleEmailChange}
 								  margin="normal"
 								  variant="outlined"
-								  fullWidth='true'
+								  fullWidth={true}
 								  required
 								  autoFocus
 								  autoComplete='off'
@@ -69,7 +70,7 @@ check =()=>{
 								  onChange={this.handlePasswordChange}
 								  margin="normal"
 								  variant="outlined"
-								  fullWidth='true'
+								  fullWidth={true}
 								  required
 								  autoComplete='off'
 								  type='password'
@@ -79,7 +80,7 @@ check =()=>{
 											<Checkbox
 					              checked={this.state.checked}
 					              onChange={this.check}
-					              value={this.state.checked}
+					              value={this.state.checked.toString()}
 												color="primary"
 					            />
 					          }
@@ -87,6 +88,7 @@ check =()=>{
 										style={{color: 'gainsboro'}}
 					        />
 							</form>
+							<Link href='#' underline='none'> Don't have account? Sign up! </Link>
 						</DialogContent>
 						<DialogActions>
 							<Tooltip title='Discard changes and exit'>
