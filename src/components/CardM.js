@@ -184,7 +184,7 @@ edit=()=>{
           scroll='body'
           disableBackdropClick={false}
         >
-          <EditPost close={this.edit} date={this.state.date} title={this.props.title} text={this.props.readMore} infoComment={this.props.infoComment}/>
+          <EditPost close={this.edit} date={this.props.date} title={this.props.title} text={this.props.readMore} infoComment={this.props.infoComment}/>
         </Dialog>
       </Card>
     );

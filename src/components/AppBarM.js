@@ -72,17 +72,7 @@ getScreen=(val)=>{
 };
 
 addNewPost=()=>{
-  const options={
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    weekday: 'long',
-    timezone: 'UTC',
-    hour: 'numeric',
-    minute: 'numeric'
-  }
-  const date =new Date();
-	this.setState({addNewPost:true, date: date.toLocaleString('ru', options)})
+	this.setState({addNewPost:true})
   };
 
 handleClose = () => {
@@ -97,6 +87,19 @@ loginBoxClose=()=>{
 	this.setState({loginBox:false})
 };
 
+componentDidMount(){
+  const options={
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'long',
+    timezone: 'UTC',
+    hour: 'numeric',
+    minute: 'numeric'
+  }
+  const date =new Date();
+  this.setState({date: date.toLocaleString('ru', options)})
+}
   render() {
 	  const { classes } = this.props;
 	  const { value  } = this.state;

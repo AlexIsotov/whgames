@@ -11,11 +11,11 @@ import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 import Fab from '@material-ui/core/Fab';
 import { connect } from "react-redux";
-import { createPost } from "../js/actions/actions";
+import { editPost } from "../js/actions/actions";
 
 function mapDispatchToProps(dispatch) {
   return {
-    createPost: post => dispatch(createPost(post))
+    editPost: post => dispatch(editPost(post))
   };
 }
 const styles = {
@@ -26,7 +26,7 @@ closeButton: {
 	},
 }
 
-class EditPost extends Component {
+class EditThisPost extends Component {
   constructor(props){
   	super(props);
   	this.state={
@@ -73,22 +73,20 @@ cancelClose=(e)=>{
 
 handleSubmit(e) {
   e.preventDefault();
-  /* const { title, text, infoComment } = this.state;
+  const { title, text, infoComment } = this.state;
    const {date} = this.props;
-   const formData = new FormData();
-   for(let i=0; i<this.state.files.length; i++){
-     let file = this.state.files[i];
-     formData.append('files[]', file);
-   };
-   this.props.createPost({ title, text, date, formData, infoComment });
-   this.setState({ title: '', text:'', infoComment:'', files:{} }, ()=> this.confirmClose());*/
+   this.props.editPost({ title, text, date, infoComment });
+   this.setState({ title: '', text:'', infoComment:'', }, ()=> this.confirmClose());
  }
 
+ componentDidMount(){
+   this.setState({title: this.props.title, text:this.props.text, infoComment: this.props.infoComment})
+ }
   render() {
 	  return (
    	<div>
           <DialogTitle>
-			       Edit post
+			       Edit text
 			       <IconButton aria-label="Close" className={this.props.classes.closeButton} onClick={this.closeModal}>
 				       <CloseIcon />
 			       </IconButton>
@@ -122,7 +120,7 @@ handleSubmit(e) {
       				<TextField
       				  id="Post-infoComment"
       				  label="Ваше мнение, оно ооочень важно остальным"
-      				  value={this.props.infoComment}
+      				  defaultValue={this.props.infoComment}
       				  onChange={this.handleInfoCommentChange}
       				  margin="normal"
       				  variant="outlined"
@@ -161,5 +159,5 @@ handleSubmit(e) {
     );
   }
 }
-{/*const AddNewPost=connect(null, mapDispatchToProps)(AddNewPostS);*/}
+const EditPost=connect(null, mapDispatchToProps)(EditThisPost);
 export default withStyles(styles)(EditPost);
