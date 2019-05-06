@@ -88,11 +88,11 @@ check =()=>{
 										style={{color: 'gainsboro'}}
 					        />
 							</form>
-							<Link href='#' underline='none'> Don't have account? Sign up! </Link>
+							<Link href='#' underline='none'> Don't have account? Sign up and start to comunicate! </Link>
 						</DialogContent>
 						<DialogActions>
 							<Tooltip title='Discard changes and exit'>
-							 <Button color='primary' onClick={this.close}>Accept</Button>
+							 <Button color='primary' onClick={this.close}>Accept!</Button>
 							</Tooltip>
 							<Tooltip title='Cancel'>
 							 <Button color='secondary' onClick={this.close}>Cancel</Button>

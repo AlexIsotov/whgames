@@ -86,7 +86,7 @@ handleSubmit(e) {
 	  return (
    	<div>
           <DialogTitle>
-			       Edit text
+			       Edit post
 			       <IconButton aria-label="Close" className={this.props.classes.closeButton} onClick={this.closeModal}>
 				       <CloseIcon />
 			       </IconButton>
@@ -140,17 +140,17 @@ handleSubmit(e) {
     			  disableBackdropClick={true}
     			 >
 			      <DialogTitle>
-			          Are u sure?
+			          Are you sure?
 			      </DialogTitle>
 			      <DialogContent>
 				        Do you want to exit post constructor?
 			      </DialogContent>
       			<DialogActions>
         			<Tooltip title='Discard changes and exit'>
-        			 <Button color='primary' onClick={this.confirmClose}>Yes</Button>
+        			 <Button color='primary' onClick={this.confirmClose}>Yes!</Button>
         			</Tooltip>
         			<Tooltip title='Cancel'>
-        			 <Button color='secondary' onClick={this.cancelClose}>Nope</Button>
+        			 <Button color='secondary' onClick={this.cancelClose}>Nope!</Button>
         			</Tooltip>
       			</DialogActions>
       			</Dialog>
