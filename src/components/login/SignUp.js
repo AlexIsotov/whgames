@@ -9,24 +9,31 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from '@material-ui/core/Link';
-import SignUp from './SignUp';
 
-class LoginBox extends Component {
+class SignUp extends Component {
 constructor(props){
 	super(props);
 	this.state={
 		open:true,
 		email:'',
 		passwrd:'',
-		checked: false,
-		signUp: false,
+    passwrdAgain:'',
+    confirm: true,
 		};
 }
 
 close=()=>{
-	this.setState({open: false});
-	this.props.closeLoginBox();
+    this.setState({passwrd:'', passwrdAgain:'', email:''});
+    this.props.closeSignUp();
 };
+
+signUp=()=>{
+  if (this.state.confirm === true) {alert('Please check password!')}
+  else { //no func only for the first time
+    this.setState({passwrd:'', passwrdAgain:'', email:''});
+    this.props.closeSignUp();
+  }
+}
 
 handleEmailChange=(e)=>{
 	this.setState({email: e.target.value});
@@ -36,19 +43,20 @@ handlePasswordChange=(e)=>{
 	this.setState({passwrd: e.target.value});
 };
 
-check =()=>{
-	this.setState({checked: !this.state.checked});
-}
-
-closeSignUp=()=>{
-	this.setState({signUp:false})
-}
+handlePasswordAgainChange=(e)=>{
+	this.setState({passwrdAgain: e.target.value}, ()=>{
+    if(this.state.passwrdAgain===this.state.passwrd) {
+      this.setState({confirm: false});
+    }
+    else {this.setState({confirm: true});}
+  });
+};
 
   render() {
 	  return (
    		<div>
           <Dialog
-					 open={this.state.open}
+					 open={this.props.open}
 					 onClose={this.close}
 					>
 						<DialogTitle>
@@ -81,34 +89,33 @@ closeSignUp=()=>{
 								  autoComplete='off'
 								  type='password'
 								  />
-									<FormControlLabel
-					          control={
-											<Checkbox
-					              checked={this.state.checked}
-					              onChange={this.check}
-					              value={this.state.checked.toString()}
-												color="primary"
-					            />
-					          }
-					          label="Stay online"
-										style={{color: 'gainsboro'}}
-					        />
+                  <TextField
+  								  id="passwrdAgain"
+  								  label="Confirm Password"
+  								  value={this.state.passwrdAgain}
+  								  onChange={this.handlePasswordAgainChange}
+  								  margin="normal"
+                    error={this.state.confirm}
+  								  variant="outlined"
+  								  fullWidth={true}
+  								  required
+  								  autoComplete='off'
+  								  type='password'
+  								  />
 							</form>
-							<Link component="button" onClick={()=>{this.setState({signUp: true})}} underline='none'> Don't have account? Sign up and start to comunicate! </Link>
 						</DialogContent>
 						<DialogActions>
-							<Tooltip title='Log in'>
-							 <Button color='primary' onClick={this.close}>Sign in!</Button>
+							<Tooltip title='SignUp!'>
+							 <Button color='primary' onClick={this.signUp}>Sign up!</Button>
 							</Tooltip>
 							<Tooltip title='Cancel'>
 							 <Button color='secondary' onClick={this.close}>Cancel</Button>
 							</Tooltip>
 						</DialogActions>
 					</Dialog>
-			  	<SignUp open={this.state.signUp} closeSignUp={this.closeSignUp}/>
 		</div>
     );
   }
 }
 
-export default LoginBox;
+export default SignUp;
