@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Link from '@material-ui/core/Link';
 
 class SignUp extends Component {
 constructor(props){
@@ -19,6 +18,7 @@ constructor(props){
 		passwrd:'',
     passwrdAgain:'',
     confirm: true,
+		checked: false,
 		};
 }
 
@@ -52,6 +52,9 @@ handlePasswordAgainChange=(e)=>{
   });
 };
 
+check =()=>{
+	this.setState({checked: !this.state.checked});
+}
   render() {
 	  return (
    		<div>
@@ -102,6 +105,17 @@ handlePasswordAgainChange=(e)=>{
   								  autoComplete='off'
   								  type='password'
   								  />
+										<FormControlLabel
+						          control={
+												<Checkbox
+						              checked={this.state.checked}
+						              onChange={this.check}
+						              value={this.state.checked.toString()}
+													color="primary"
+						            />
+						          }
+						          label="Use your email to send news and ..."
+						        />
 							</form>
 						</DialogContent>
 						<DialogActions>

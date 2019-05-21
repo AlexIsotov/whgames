@@ -90,7 +90,7 @@ hide=()=>{
 }
 
 edit=()=>{
-  this.setState({editMode: !this.state.editMode});
+  this.setState({editMode: !this.state.editMode, anchorEl: null});
 }
   render() {
 	 const { classes } = this.props;

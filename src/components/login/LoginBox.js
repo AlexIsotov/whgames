@@ -91,7 +91,6 @@ closeSignUp=()=>{
 					            />
 					          }
 					          label="Stay online"
-										style={{color: 'gainsboro'}}
 					        />
 							</form>
 							<Link component="button" onClick={()=>{this.setState({signUp: true})}} underline='none'> Don't have account? Sign up and start to comunicate! </Link>
