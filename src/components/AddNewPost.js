@@ -96,6 +96,7 @@ handleSubmit(e) {
 		      </DialogTitle>
           <DialogContent>
             <form onSubmit={(e)=>this.handleSubmit(e)}>
+              <Tooltip title="Just short title for your story">
       				<TextField
       				  id="newPost-title"
       				  label="Title"
@@ -108,6 +109,8 @@ handleSubmit(e) {
       				  autoFocus
       				  autoComplete='off'
       				/>
+              </Tooltip>
+              <Tooltip title="Short text :)">
       				<TextField
       				  id="newPost-text"
       				  label="Text"
@@ -120,6 +123,7 @@ handleSubmit(e) {
       				  multiline
       				  rows='6'
       				/>
+              </Tooltip>
       				<div style={{display:'flex', justifyContent: 'center', alignItems:'center', flexDirection: 'column'}}>
                 <input
                 accept="image/*"
@@ -138,6 +142,7 @@ handleSubmit(e) {
                 </label>
                 <p style={{color: 'gray'}}><small>{this.state.files.length>0 && 'Selected ' + this.state.files.length + ' image(s)'}</small></p>
       				</div>
+              <Tooltip title="Your own opinion about this post">
               <TextField
       				  id="newPost-infoComment"
       				  label="Ваше мнение, оно ооочень важно остальным"
@@ -149,6 +154,7 @@ handleSubmit(e) {
       				  multiline
       				  rows='5'
       				/>
+              </Tooltip>
               <DialogActions>
                 <Button type='submit' variant='contained' color='primary'> Add post </Button>
                 <Button variant='contained' color='secondary' onClick={this.closeModal}> Cancel </Button>
