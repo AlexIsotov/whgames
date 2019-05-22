@@ -7,10 +7,9 @@ class GridStreams extends Component {
    return (
    	<div>
      <Grid container alignContent={'center'} justify={'space-around'} spacing={8}>
-  		 <Grid item >
-
+  		<Grid item >
   		 </Grid>
-		 </Grid>
+		  </Grid>
     </div>
     );
   }

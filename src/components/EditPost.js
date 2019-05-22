@@ -92,7 +92,8 @@ handleSubmit(e) {
 		      </DialogTitle>
           <DialogContent>
             <form onSubmit={(e)=>this.handleSubmit(e)}>
-      				<TextField
+              <Tooltip title="Change title here">
+              <TextField
       				  id="Post-title"
       				  label="Title"
       				  defaultValue={this.props.title}
@@ -104,6 +105,8 @@ handleSubmit(e) {
       				  autoFocus
       				  autoComplete='off'
       				/>
+              </Tooltip>
+              <Tooltip title="Change text here">
       				<TextField
       				  id="Post-text"
       				  label="Text"
@@ -116,6 +119,8 @@ handleSubmit(e) {
       				  multiline
       				  rows='6'
       				/>
+              </Tooltip>
+              <Tooltip title="Add or edit your own comment">
       				<TextField
       				  id="Post-infoComment"
       				  label="Ваше мнение, оно ооочень важно остальным"
@@ -127,6 +132,7 @@ handleSubmit(e) {
       				  multiline
       				  rows='5'
       				/>
+              </Tooltip>
               <DialogActions>
                 <Button type='submit' variant='contained' color='primary'> Save </Button>
                 <Button variant='contained' color='secondary' onClick={this.closeModal}> Cancel </Button>
