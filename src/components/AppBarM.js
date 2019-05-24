@@ -18,6 +18,8 @@ import Menu from './Menu';
 import Dialog from '@material-ui/core/Dialog';
 import AddNewPost from './AddNewPost';
 import LoginBox from './login/LoginBox';
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 const drawerWidth = 340;
 
@@ -48,6 +50,9 @@ const styles = {
     justifyContent: 'space-between',
 	  padding: 5,
   },
+  success: {
+    backgroundColor: '#43a047',
+  },
 };
 
 class AppBarM extends Component {
@@ -57,6 +62,7 @@ state = {
 	openDrawer: false,
 	addNewPost: false,
 	loginBox: false,
+  openSnack: false,
 };
 
 handleClick = () => {
@@ -75,8 +81,8 @@ addNewPost=()=>{
 	this.setState({addNewPost:true})
   };
 
-handleClose = () => {
-    this.setState({ addNewPost: false });
+handleClose = (e) => {
+    this.setState({ addNewPost: false, openSnack:e });
 };
 
 login=()=>{
@@ -87,6 +93,9 @@ loginBoxClose=()=>{
 	this.setState({loginBox:false})
 };
 
+closeSnack=()=>{
+  this.setState({openSnack:false});
+}
 componentDidMount(){
   const options={
     year: 'numeric',
@@ -103,6 +112,7 @@ componentDidMount(){
   render() {
 	  const { classes } = this.props;
 	  const { value  } = this.state;
+
     return (
      	<div className={classes.root}>
         <AppBar className={classes.bar} position="static">
@@ -163,6 +173,25 @@ componentDidMount(){
   			    {this.state.loginBox===true &&
              <LoginBox closeLoginBox={this.loginBoxClose}/>
             }
+            <Snackbar
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              open={this.state.openSnack}
+              autoHideDuration={6000}
+              onClose={this.closeSnack}
+            >
+              <SnackbarContent
+              className={classes.success}
+              aria-describedby="client-snackbar"
+              message={
+                <span id="client-snackbar">
+                  done
+                </span>
+              }
+              />
+            </Snackbar>
   		</div>
     );
   }

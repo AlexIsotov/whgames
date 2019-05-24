@@ -27,7 +27,6 @@ export const createPost = ({ date, title, text, formData, infoComment }) => {
       return axios(optionsFile)
        .then(response => {
          const data = ({'date':date, 'title':title, 'text':text, 'file': response.data, 'infoсomment': infoComment});
-console.log(data);
          const options = {
            method: 'POST',
            headers: { 'content-type': 'application/x-www-form-urlencoded' },

@@ -63,8 +63,8 @@ handleFilesChange=(e)=>{
     this.setState({files : e.target.files});
 };
 
-confirmClose=()=>{
-	this.setState({confirm:true}, ()=>{this.props.close();})
+confirmClose=(e)=>{
+	this.setState({confirm:true}, ()=>{this.props.close(e);})
 };
 
 cancelClose=(e)=>{
@@ -82,10 +82,14 @@ handleSubmit(e) {
      formData.append('files[]', file);
    };
    this.props.createPost({ title, text, date, formData, infoComment });
-   this.setState({ title: '', text:'', infoComment:'', files:{} }, ()=> this.confirmClose());
+   this.setState({ title: '', text:'', infoComment:'', files:{}}, ()=>{
+     this.confirmClose(true);
+    });
  }
 
+
   render() {
+
 	  return (
    	<div>
           <DialogTitle>
@@ -177,11 +181,10 @@ handleSubmit(e) {
         			 <Button color='primary' onClick={this.confirmClose}>Yes</Button>
         			</Tooltip>
         			<Tooltip title='Cancel'>
-        			 <Button color='secondary' onClick={this.cancelClose}>Nope</Button>
+        			 <Button color='secondary' onClick={this.cancelClose}>Cancel</Button>
         			</Tooltip>
       			</DialogActions>
       			</Dialog>
-
 	  </div>
     );
   }
